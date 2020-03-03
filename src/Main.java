@@ -28,6 +28,7 @@ public class Main {
                 displayMenu();
             } else if (firstAction.equalsIgnoreCase("exit")) {
                 System.out.println("Bye.\n");
+                System.exit(0);
             } else {
                 System.out.println("Error! Not a valid command.\n");
             }
@@ -46,7 +47,7 @@ public class Main {
         System.out.println();
 
         if (actTwo.equalsIgnoreCase("list")) {
-            //list players
+            listCharacters();
         } else if (actTwo.equalsIgnoreCase("add")) {
             addCharacter();
         } else if (actTwo.equalsIgnoreCase("del") || actTwo.equalsIgnoreCase("delete")) {
@@ -86,6 +87,16 @@ public class Main {
         }
     }
 
+    public static void listCharacters() {
+        for(int i = 0; i<entities.size(); i++){
+            if(entities.get(i).getClass() == Character.class) {
+                System.out.println(entities.get(i).getName());
+                System.out.println();
+            }
+        }
+        displayPlayerMenu();
+    }
+
     public static void addCharacter() {
         String firstName = Console.getString("Enter first name: ");
         String lastName = Console.getString("Enter last name: ");
@@ -101,9 +112,9 @@ public class Main {
         int EXP = Console.getInt("Enter EXP: ");
 
         entities.add(new Character(firstName, lastName, race, strength, dexterity, constitution, intelligence, wisdom, charisma, health, level, EXP));
-        for(int i = 0; i<entities.size(); i++){
-            System.out.println(entities.get(i).getName());
-        }
+
+        System.out.println("Player: "+entities.get(entities.size()-1).getName() + " has been entered.\n");
+
         displayPlayerMenu();
     }
 }
