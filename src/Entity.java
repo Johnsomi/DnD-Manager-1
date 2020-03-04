@@ -2,6 +2,7 @@ public class Entity {
     private String firstName;
     private String lastName;
     private String race;
+    private String alignment;
     private int level = 1;
     private int EXP = 0;
     private int strength;
@@ -12,10 +13,12 @@ public class Entity {
     private int charisma;
     private int health;
 
-    public Entity(String firstName, String lastName, String race, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int health, int level, int EXP){
+
+    public Entity(String firstName, String lastName, String race, String alignment, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int health, int level, int EXP){
         this.firstName = firstName;
         this.lastName = lastName;
         this.race = race;
+        this.alignment = alignment;
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
@@ -53,6 +56,14 @@ public class Entity {
 
     public String getRace() {
         return race;
+    }
+
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
+    }
+
+    public String getAlignment() {
+        return alignment;
     }
 
     public void setStrength(int strength) {
@@ -128,7 +139,7 @@ public class Entity {
     }
 
     public String getEntity() {
-        return firstName + " " + lastName + " " + race + " " + strength + " " + dexterity + " " + constitution + " " + intelligence + " " + wisdom + " " + charisma + " " + health + " " + level + " " + EXP;
+        return firstName + " " + lastName + " " + race + " " + alignment+ " " + strength + " " + dexterity + " " + constitution + " " + intelligence + " " + wisdom + " " + charisma + " " + health + " " + level + " " + EXP;
     }
 
 }

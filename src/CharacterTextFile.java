@@ -34,26 +34,27 @@ public final class CharacterTextFile implements DAO<Character>{
                 String firstName = columns[0];
                 String lastName = columns[1];
                 String race = columns[2];
-                String str = columns[3];
+                String alignment = columns[3];
+                String str = columns[4];
                 int strength = Integer.parseInt(str);
-                String dex = columns[4];
+                String dex = columns[5];
                 int dexterity = Integer.parseInt(dex);
-                String con = columns[5];
+                String con = columns[6];
                 int constitution = Integer.parseInt(con);
-                String intel = columns[6];
+                String intel = columns[7];
                 int intelligence = Integer.parseInt(intel);
-                String wis = columns[7];
+                String wis = columns[8];
                 int wisdom = Integer.parseInt(wis);
-                String cha = columns[8];
+                String cha = columns[9];
                 int charisma = Integer.parseInt(cha);
-                String hp = columns[9];
+                String hp = columns[10];
                 int health = Integer.parseInt(hp);
-                String lv = columns[10];
+                String lv = columns[11];
                 int level = Integer.parseInt(lv);
-                String exp = columns[11];
+                String exp = columns[12];
                 int EXP = Integer.parseInt(exp);
 
-                Character p = new Character(firstName, lastName, race, strength, dexterity, constitution, intelligence, wisdom, charisma, health, level, EXP);
+                Character p = new Character(firstName, lastName, race, alignment, strength, dexterity, constitution, intelligence, wisdom, charisma, health, level, EXP);
 
                 players.add(p);
 
@@ -108,6 +109,7 @@ public final class CharacterTextFile implements DAO<Character>{
             out.print(p.getFirstName() + FIELD_SEP);
             out.print(p.getLastName() + FIELD_SEP);
             out.print(p.getRace() + FIELD_SEP);
+            out.print(p.getAlignment() + FIELD_SEP);
             out.print(p.getStrength() + FIELD_SEP);
             out.print(p.getDexterity() + FIELD_SEP);
             out.print(p.getConstitution() + FIELD_SEP);

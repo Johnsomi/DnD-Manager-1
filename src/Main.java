@@ -64,7 +64,7 @@ public class Main {
         } else if (actTwo.equalsIgnoreCase("add")) {
             addCharacter();
         } else if (actTwo.equalsIgnoreCase("del") || actTwo.equalsIgnoreCase("delete")) {
-            //delCharacter();
+            deleteCharacter();
         } else if (actTwo.equalsIgnoreCase("edit")) {
             //editCharacter();
         } else if (actTwo.equalsIgnoreCase("back")) {
@@ -90,7 +90,7 @@ public class Main {
         } else if (actTwo.equalsIgnoreCase("add")) {
             //addNPC();
         } else if (actTwo.equalsIgnoreCase("del") || actTwo.equalsIgnoreCase("delete")) {
-            //delNPC();
+            //deleteNPC();
         } else if (actTwo.equalsIgnoreCase("edit")) {
             //editNPC();
         } else if (actTwo.equalsIgnoreCase("back")) {
@@ -115,7 +115,7 @@ public class Main {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < players.size(); i++) {
                 p = players.get(i);
-                //sb.append(StringUtils.padWithSpaces(p.getName(), 35));
+                //sb.append(StringUtils.padWithSpaces(p.getEntity(), 35));
                 sb.append(p.getEntity());
                 sb.append("\n");
             }
@@ -130,6 +130,7 @@ public class Main {
         String firstName = Console.getString("Enter first name: ");
         String lastName = Console.getString("Enter last name: ");
         String race = Console.getString("Enter race: ");
+        String alignment = Console.getString("Enter alignment: ");
         int strength = Console.getInt("Enter strength: ");
         int dexterity = Console.getInt("Enter dexterity: ");
         int constitution = Console.getInt("Enter constitution: ");
@@ -140,9 +141,50 @@ public class Main {
         int level = Console.getInt("Enter level: ");
         int EXP = Console.getInt("Enter EXP: ");
 
-        entities.add(new Character(firstName, lastName, race, strength, dexterity, constitution, intelligence, wisdom, charisma, health, level, EXP));
+        Character character = new Character();
+        character.setFirstName(firstName);
+        character.setLastName(lastName);
+        character.setRace(race);
+        character.setAlignment(alignment);
+        character.setStrength(strength);
+        character.setDexterity(dexterity);
+        character.setConstitution(constitution);
+        character.setIntelligence(intelligence);
+        character.setWisdom(wisdom);
+        character.setCharisma(charisma);
+        character.setHealth(health);
+        character.setLevel(level);
+        character.setEXP(EXP);
 
-        System.out.println("Player: "+entities.get(entities.size()-1).getName() + " has been entered.\n");
+        try{
+            characterDAO.add(character);
+        }catch(IOException e){
+            System.out.println("Error adding player. Try again.");
+            return;
+        }
+        System.out.println();
+        System.out.println("Player " + character.getName() + " has been added.\n");
+        //entities.add(new Character(firstName, lastName, race, strength, dexterity, constitution, intelligence, wisdom, charisma, health, level, EXP));
+        //System.out.println("Player: "+entities.get(entities.size()-1).getName() + " has been entered.\n");
+
+        displayPlayerMenu();
+    }
+
+    public static void deleteCharacter(){
+        String name = Console.getString("Enter a name to delete: ");
+        try{
+            Character p = characterDAO.get(name);
+
+            System.out.println();
+            if(p != null){
+                characterDAO.delete(p);
+                System.out.println(p.getName() + " has been deleted.\n");
+            }else{
+                System.out.println("No names match.\n");
+            }
+        }catch(IOException e){
+            System.out.println("Error deleting player. Try again.\n");
+        }
 
         displayPlayerMenu();
     }
