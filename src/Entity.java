@@ -128,6 +128,7 @@ public class Entity {
     }
 
     public String getEntity() {
-        return firstName + " " + lastName + ", " + race;
+        return firstName + " " + lastName + " " + race + " " + strength + " " + dexterity + " " + constitution + " " + intelligence + " " + wisdom + " " + charisma + " " + health + " " + level + " " + EXP;
     }
+
 }

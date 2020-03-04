@@ -1,9 +1,22 @@
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 public class Main {
     static ArrayList<Entity> entities = new ArrayList<>();
+    private static DAO<Character> characterDAO = null;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Welcome to the DnD Manager!");
+        try{
+            characterDAO = new CharacterTextFile();
+        }catch(FileNotFoundException f){
+            System.out.println("Error reading data file! Exiting application.");
+            System.out.println("java.io.FileNotFoundException: customers.txt (The system cannot find the file specified)");
+            System.exit(0);
+        }catch(IOException e){
+            System.out.println("Error");
+        }
         displayMenu();
     }
 
@@ -88,11 +101,27 @@ public class Main {
     }
 
     public static void listCharacters() {
-        for(int i = 0; i<entities.size(); i++){
+        /*for(int i = 0; i<entities.size(); i++){
             if(entities.get(i).getClass() == Character.class) {
                 System.out.println(entities.get(i).getName());
                 System.out.println();
             }
+        }*/
+        System.out.println("PLAYER LIST");
+        try{
+            List<Character> players = characterDAO.getAll();
+
+            Character p;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < players.size(); i++) {
+                p = players.get(i);
+                //sb.append(StringUtils.padWithSpaces(p.getName(), 35));
+                sb.append(p.getEntity());
+                sb.append("\n");
+            }
+            System.out.println(sb.toString());
+        }catch(IOException e){
+
         }
         displayPlayerMenu();
     }
