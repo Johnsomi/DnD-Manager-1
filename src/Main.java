@@ -37,6 +37,8 @@ public class Main {
                 displayPlayerMenu();
             } else if (firstAction.equalsIgnoreCase("npc")) {
                 displayNPCMenu();
+            } else if (firstAction.equalsIgnoreCase("play")) {
+                //startGame();
             } else if (firstAction.equalsIgnoreCase("help") || firstAction.equalsIgnoreCase("menu")) {
                 displayMenu();
             } else if (firstAction.equalsIgnoreCase("exit")) {
@@ -187,5 +189,79 @@ public class Main {
         }
 
         displayPlayerMenu();
+    }
+
+    public static void editCharacter(){
+        String name = Console.getString("Enter a name to edit: ");
+
+        try{
+            Character p = characterDAO.get(name);
+
+            System.out.println();
+            if(p != null){
+                String stat = Console.getString("First name = first\n" +
+                        "Last name = last\n" +
+                        "Race = race\n" +
+                        "Alignment = align\n" +
+                        "Strength = str\n" +
+                        "Dexterity = dex\n" +
+                        "Constitution = con\n" +
+                        "Intelligence = int\n" +
+                        "Wisdom = wis\n" +
+                        "Charisma = cha\n" +
+                        "Health = hp\n" +
+                        "Level = lv\n" +
+                        "EXP = exp\n" +
+                        "Stat being edited: ");
+
+                if(stat.equalsIgnoreCase("first")){
+                    String NFN = Console.getString("New first name: ");
+
+                }else if(stat.equalsIgnoreCase("last")){
+                    String NLN = Console.getString("New last name: ");
+
+                }else if(stat.equalsIgnoreCase("race")){
+                    String NR = Console.getString("New race: ");
+
+                }else if(stat.equalsIgnoreCase("align")){
+                    String NA = Console.getString("New alignment: ");
+
+                }else if(stat.equalsIgnoreCase("str")){
+                    int NS = Console.getInt("New strength: ");
+
+                }else if(stat.equalsIgnoreCase("dex")){
+                    int ND = Console.getInt("New dexterity: ");
+
+                }else if(stat.equalsIgnoreCase("con")){
+                    int NCO = Console.getInt("New constitution: ");
+
+                }else if(stat.equalsIgnoreCase("int")){
+                    int NI = Console.getInt("New intelligence: ");
+
+                }else if(stat.equalsIgnoreCase("wis")){
+                    int NW = Console.getInt("New wisdom: ");
+
+                }else if(stat.equalsIgnoreCase("cha")){
+                    int NCH = Console.getInt("New charisma: ");
+
+                }else if(stat.equalsIgnoreCase("hp")){
+                    int NHP = Console.getInt("New health: ");
+
+                }else if(stat.equalsIgnoreCase("lv")){
+                    int NLV = Console.getInt("New level: ");
+
+                }else if(stat.equalsIgnoreCase("exp")){
+                    int NEXP = Console.getInt("New EXP: ");
+                    
+                }else{
+                    System.out.println("Something went wrong.");
+                }
+
+                characterDAO.update(p);
+
+            }
+        }catch(IOException e){
+            System.out.println("Error editing player. Try again.\n");
+        }
     }
 }
