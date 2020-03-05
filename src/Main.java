@@ -252,7 +252,7 @@ public class Main {
 
                 }else if(stat.equalsIgnoreCase("exp")){
                     int NEXP = Console.getInt("New EXP: ");
-                    
+
                 }else{
                     System.out.println("Something went wrong.");
                 }
