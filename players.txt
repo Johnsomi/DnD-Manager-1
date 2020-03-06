@@ -1,2 +1,2 @@
-Johnathan	Jostar	Human	Lawful Good	10	12	12	14	11	12	20	5	20
+Danny	Deveto	Human	Lawful Good	10	12	12	14	11	12	20	7	20
 jimmy	turner	human	lawful good	5	4	5	2	2	20	11	1	5
